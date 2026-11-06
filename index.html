@@ -71,7 +71,27 @@ main { padding-block: 32px 64px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
 .item { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
 .item .ph { position: relative; aspect-ratio: 4 / 3; background: var(--line); }
-.item .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slides { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.slides::-webkit-scrollbar { display: none; }
+.slides img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; display: block; scroll-snap-align: start; cursor: zoom-in; }
+.count { position: absolute; right: 10px; bottom: 10px; background: rgba(0,0,0,.66); color: #fff; font: 600 12px var(--body); padding: 3px 9px; border-radius: 999px; font-variant-numeric: tabular-nums; pointer-events: none; }
+.nav { position: absolute; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: #111; font-size: 18px; line-height: 1; cursor: pointer; display: grid; place-items: center; box-shadow: 0 1px 4px rgba(0,0,0,.25); opacity: 0; transition: opacity .15s; }
+.nav.prev { left: 8px; } .nav.next { right: 8px; }
+.item:hover .nav, .nav:focus-visible { opacity: 1; }
+@media (hover: none) { .nav { display: none; } }
+.nav:focus-visible { outline: 3px solid #7aa7ff; }
+
+/* Visor de fotos a pantalla completa */
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(8,8,8,.96); display: flex; flex-direction: column; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+.lb-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #fff; padding: 12px 16px; }
+.lb-top b { font: 700 15px var(--display); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-top span { color: #bbb; font-size: 13px; font-variant-numeric: tabular-nums; flex: none; }
+.lb-close { flex: none; background: #fff; color: #111; border: 0; border-radius: 999px; padding: 8px 14px; font: 700 14px var(--body); cursor: pointer; }
+.lb-strip { flex: 1; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; min-height: 0; }
+.lb-strip::-webkit-scrollbar { display: none; }
+.lb-strip img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: contain; scroll-snap-align: center; }
+.lb .nav { opacity: 1; width: 44px; height: 44px; font-size: 22px; }
+.lb-bottom { display: flex; justify-content: center; padding: 12px 16px 16px; }
 .item .no { position: absolute; top: 10px; left: 10px; background: var(--ink); color: var(--on-ink); font: 700 13px var(--display); padding: 3px 9px; border-radius: 999px; font-variant-numeric: tabular-nums; }
 .item .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .item h3 { font-family: var(--display); font-weight: 700; font-size: 17px; line-height: 1.25; margin: 0; text-wrap: balance; }
@@ -198,6 +218,8 @@ const cats = [
     [761912, "Marco vertical para GoPro", "Graba en vertical, perfecto para reels y TikTok."],
   ]},
 ];
+// Cantidad de fotos por modelo (img/<id>-<0..n-1>.webp)
+const PICS = { 171811: 3, 756926: 6, 761912: 7, 772705: 5, 802982: 13, 869077: 1, 880031: 3, 1102140: 9, 1771752: 3, 1938885: 7, 1951493: 9, 1958147: 9, 2011443: 8, 2033555: 6, 2861794: 6, 3214582: 3, 3222199: 5, 3261826: 7, 3292721: 3, 3354693: 8, 3368522: 5, 3405783: 4, 3433680: 17 };
 let n = 0;
 cats.forEach(c => c.items = c.items.map(([id, name, desc]) => ({ id, name, desc, n: ++n })));
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
@@ -210,7 +232,13 @@ document.getElementById("catalog").innerHTML = cats.map(c => `
     <h2>${c.name}</h2><p class="sub">${c.sub}</p>
     <div class="grid">${c.items.map(it => `
       <article class="item">
-        <div class="ph"><img src="img/${it.id}.webp" alt="${esc(it.name)}" loading="lazy"><span class="no">#${it.n}</span></div>
+        <div class="ph">
+          <div class="slides" data-n="${it.n}">${Array.from({ length: PICS[it.id] }, (_, i) => `<img src="img/${it.id}-${i}.webp" alt="${esc(it.name)}, foto ${i + 1}" loading="lazy" data-i="${i}">`).join("")}</div>
+          <span class="no">#${it.n}</span>
+          ${PICS[it.id] > 1 ? `<span class="count">1 / ${PICS[it.id]}</span>
+          <button class="nav prev" type="button" aria-label="Foto anterior">‹</button>
+          <button class="nav next" type="button" aria-label="Foto siguiente">›</button>` : ""}
+        </div>
         <div class="body">
           <h3>${esc(it.name)}</h3>
           <p>${esc(it.desc)}</p>
@@ -238,6 +266,50 @@ chips.addEventListener("click", e => {
 });
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 show(location.hash.slice(1));
+
+// Galería de cada producto
+const items = Object.fromEntries(cats.flatMap(c => c.items).map(it => [it.n, it]));
+const idx = strip => Math.round(strip.scrollLeft / strip.clientWidth);
+const go = (strip, d) => strip.scrollTo({ left: (idx(strip) + d) * strip.clientWidth, behavior: "smooth" });
+document.querySelectorAll(".slides").forEach(strip => {
+  const ph = strip.parentElement, count = ph.querySelector(".count");
+  if (count) strip.addEventListener("scroll", () => { count.textContent = `${idx(strip) + 1} / ${strip.children.length}`; }, { passive: true });
+  ph.querySelector(".prev")?.addEventListener("click", () => go(strip, -1));
+  ph.querySelector(".next")?.addEventListener("click", () => go(strip, 1));
+  strip.addEventListener("click", e => { const img = e.target.closest("img"); if (img) openLb(items[strip.dataset.n], +img.dataset.i); });
+});
+
+// Visor a pantalla completa
+let lb = null;
+function openLb(it, start) {
+  const total = PICS[it.id];
+  lb = document.createElement("div");
+  lb.className = "lb"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true"); lb.setAttribute("aria-label", it.name);
+  lb.innerHTML = `<div class="lb-top"><b>#${it.n} · ${esc(it.name)}</b><span class="lb-c"></span><button class="lb-close" type="button">Cerrar ✕</button></div>
+    <div style="position:relative;flex:1;display:flex;min-height:0">
+      <div class="lb-strip">${Array.from({ length: total }, (_, i) => `<img src="img/${it.id}-${i}.webp" alt="${esc(it.name)}, foto ${i + 1}">`).join("")}</div>
+      ${total > 1 ? `<button class="nav prev" type="button" aria-label="Foto anterior">‹</button><button class="nav next" type="button" aria-label="Foto siguiente">›</button>` : ""}
+    </div>
+    <div class="lb-bottom"><a class="order" href="${wa(`Hola HC Customs, me interesa el #${it.n}: ${it.name}`)}">Pedir por WhatsApp →</a></div>`;
+  document.body.appendChild(lb);
+  document.body.style.overflow = "hidden";
+  const strip = lb.querySelector(".lb-strip"), c = lb.querySelector(".lb-c");
+  const upd = () => c.textContent = total > 1 ? `${idx(strip) + 1} / ${total}` : "";
+  strip.scrollLeft = start * strip.clientWidth; upd();
+  strip.addEventListener("scroll", upd, { passive: true });
+  lb.querySelector(".prev")?.addEventListener("click", () => go(strip, -1));
+  lb.querySelector(".next")?.addEventListener("click", () => go(strip, 1));
+  lb.querySelector(".lb-close").addEventListener("click", closeLb);
+  lb.querySelector(".lb-close").focus();
+}
+function closeLb() { if (!lb) return; lb.remove(); lb = null; document.body.style.overflow = ""; }
+document.addEventListener("keydown", e => {
+  if (!lb) return;
+  const strip = lb.querySelector(".lb-strip");
+  if (e.key === "Escape") closeLb();
+  if (e.key === "ArrowRight") go(strip, 1);
+  if (e.key === "ArrowLeft") go(strip, -1);
+});
 
 document.getElementById("copyBtn").addEventListener("click", async e => {
   const btn = e.currentTarget;

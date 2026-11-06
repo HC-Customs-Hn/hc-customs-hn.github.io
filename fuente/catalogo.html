@@ -49,8 +49,11 @@
   .cat-head .cont { font-size: 11pt; color: #8b949e; font-weight: 600; margin-left: 1mm; }
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
   .card { border-radius: 4mm; overflow: hidden; background: #f6f4ef; display: flex; flex-direction: column; }
-  .card .img { position: relative; height: 82mm; background: #e9e5dc; }
+  .card .img { position: relative; height: 62mm; background: #e9e5dc; }
   .card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumbs { min-height: 18.5mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm; padding: 1.5mm 1.5mm 0; }
+  .thumbs img { width: 100%; height: 17mm; object-fit: cover; border-radius: 1.5mm; display: block; }
+  .more { font-size: 8.5pt; color: #57606a; margin-top: 1mm; }
   .card .num { position: absolute; top: 3mm; left: 3mm; background: var(--c); color: #fff; font-weight: 800; font-size: 11pt; padding: 1mm 3mm; border-radius: 10mm; }
   .card .info { padding: 4mm 5mm 5mm; display: flex; flex-direction: column; flex: 1; }
   .card h3 { font-size: 13pt; font-weight: 700; line-height: 1.2; }
@@ -106,6 +109,8 @@ const cats = [
 ];
 
 // numeración y paginación (portada = 1, índice = 2)
+const PICS = { 171811: 3, 756926: 6, 761912: 7, 772705: 5, 802982: 13, 869077: 1, 880031: 3, 1102140: 9, 1771752: 3, 1938885: 7, 1951493: 9, 1958147: 9, 2011443: 8, 2033555: 6, 2861794: 6, 3214582: 3, 3222199: 5, 3261826: 7, 3292721: 3, 3354693: 8, 3368522: 5, 3405783: 4, 3433680: 17 };
+const SITE = "https://hc-customs-hn.github.io/";
 let n = 0, page = 3;
 const pages = [];
 for (const cat of cats) {
@@ -160,10 +165,12 @@ for (const pg of pages) {
     <div class="cat-head"><div class="bar"></div><h2>${cat.name}</h2>${pg.first ? "" : `<span class="cont">(continuación)</span>`}</div>
     <div class="grid">
     ${pg.chunk.map(it => `<div class="card" id="p${it.n}">
-        <div class="img"><img src="../img/${it.id}.webp"><span class="num">#${it.n}</span></div>
+        <div class="img"><img src="../img/${it.id}-0.webp"><span class="num">#${it.n}</span></div>
+        <div class="thumbs">${Array.from({ length: Math.min(4, PICS[it.id] - 1) }, (_, i) => `<img src="../img/${it.id}-${i + 1}.webp">`).join("")}</div>
         <div class="info">
           <h3>${esc(it.name)}</h3>
           <p>${esc(it.desc)}</p>
+          ${PICS[it.id] > 5 ? `<a class="more" href="${SITE}">+${PICS[it.id] - 5} fotos más en la web →</a>` : ""}
           <a class="order" href="${wa(`Hola ${BRAND}, me interesa el #${it.n}: ${it.name}`)}">Pedir por WhatsApp →</a>
         </div>
       </div>`).join("")}
@@ -178,7 +185,7 @@ document.getElementById("root").innerHTML = html;
 document.querySelectorAll("img").forEach(img => {
   const go = () => {
     try {
-      const max = 800, s = Math.min(1, max / img.naturalWidth);
+      const max = img.closest(".thumbs") ? 280 : 900, s = Math.min(1, max / img.naturalWidth);
       const c = document.createElement("canvas");
       c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
       const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
