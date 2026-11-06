@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>HC Customs · Catálogo</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #1f2328; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: inherit; text-decoration: none; }
+
+  .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; break-after: page; padding: 16mm 14mm 20mm; }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  /* Portada */
+  .cover { padding: 0; background: #111111; color: #fff; display: flex; flex-direction: column; }
+  .cover-collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3mm; height: 150mm; padding: 3mm; }
+  .cover-collage img { width: 100%; height: 100%; object-fit: cover; border-radius: 3mm; }
+  .cover-body { flex: 1; padding: 14mm 16mm; display: flex; flex-direction: column; }
+  .logo { display:inline-flex; align-items:center; justify-content:center; width:30mm; height:30mm; background:#000; color:#fff; font-weight:900; font-size:24pt; letter-spacing:1px; border:0.6mm solid #fff; border-radius:2mm; margin-bottom:6mm; }
+  .brand { font-size: 40pt; font-weight: 800; letter-spacing: -1px; line-height: 1; }
+  .brand span { color: #fff; font-weight: 300; }
+  .tagline { font-size: 17pt; margin-top: 5mm; color: #b8b8b8; }
+  .cover-meta { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 10mm; }
+  .cover-meta p { font-size: 11pt; color: #b8b8b8; line-height: 1.5; }
+  .wa-btn { display: inline-flex; align-items: center; gap: 3mm; background: #25d366; color: #0b2b17; font-weight: 700; font-size: 13pt; padding: 4mm 6mm; border-radius: 30mm; white-space: nowrap; }
+  .cover-hint { margin-top: 8mm; font-size: 11pt; color: #fff; text-decoration: underline; }
+
+  /* Índice */
+  h1.title { font-size: 28pt; font-weight: 800; color: #111111; }
+  .subtitle { font-size: 11pt; color: #57606a; margin-top: 2mm; margin-bottom: 7mm; }
+  .toc-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .toc-cat { border-radius: 4mm; padding: 5mm 6mm; background: #f6f4ef; border-left: 2.2mm solid var(--c); }
+  .toc-cat > a.cat-link { display: flex; justify-content: space-between; align-items: baseline; font-size: 14pt; font-weight: 700; color: var(--c); margin-bottom: 2.5mm; }
+  .toc-cat > a.cat-link small { font-size: 9pt; font-weight: 600; color: #57606a; }
+  .toc-cat ul { list-style: none; }
+  .toc-cat li a { display: flex; gap: 2mm; font-size: 10pt; padding: 1.1mm 0; border-bottom: 0.2mm dotted #c9c3b6; }
+  .toc-cat li a .n { color: var(--c); font-weight: 700; width: 7mm; flex: none; }
+  .toc-cat li a .name { flex: 1; }
+  .toc-cat li a .pg { color: #8b949e; font-size: 9pt; }
+  .toc-wide { grid-column: span 2; }
+  .toc-note { margin-top: 6mm; font-size: 9.5pt; color: #57606a; line-height: 1.5; }
+
+  /* Páginas de producto */
+  .cat-head { display: flex; align-items: center; gap: 4mm; margin-bottom: 6mm; }
+  .cat-head .bar { width: 2.2mm; height: 12mm; background: var(--c); border-radius: 1mm; }
+  .cat-head h2 { font-size: 22pt; font-weight: 800; color: var(--c); }
+  .cat-head .cont { font-size: 11pt; color: #8b949e; font-weight: 600; margin-left: 1mm; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .card { border-radius: 4mm; overflow: hidden; background: #f6f4ef; display: flex; flex-direction: column; }
+  .card .img { position: relative; height: 82mm; background: #e9e5dc; }
+  .card .img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card .num { position: absolute; top: 3mm; left: 3mm; background: var(--c); color: #fff; font-weight: 800; font-size: 11pt; padding: 1mm 3mm; border-radius: 10mm; }
+  .card .info { padding: 4mm 5mm 5mm; display: flex; flex-direction: column; flex: 1; }
+  .card h3 { font-size: 13pt; font-weight: 700; line-height: 1.2; }
+  .card p { font-size: 9.5pt; color: #57606a; margin-top: 1.5mm; line-height: 1.4; flex: 1; }
+  .card .order { margin-top: 3mm; align-self: flex-start; background: #25d366; color: #0b2b17; font-weight: 700; font-size: 9.5pt; padding: 1.8mm 4mm; border-radius: 10mm; }
+
+  .foot { position: absolute; left: 14mm; right: 14mm; bottom: 8mm; display: flex; justify-content: space-between; align-items: center; font-size: 9pt; color: #57606a; border-top: 0.3mm solid #e1ddd3; padding-top: 3mm; }
+  .foot b { color: #111111; }
+  .foot .back { color: #111111; font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const WA = "50487973798";
+const WA_SHOW = "8797-3798";
+const BRAND = "HC Customs";
+
+const cats = [
+  { id: "adornos", name: "Adornos navideños", c: "#b3261e", items: [
+    [772705, "Estrella de Mario 64 para el árbol", "Estrella para la punta del árbol, inspirada en el videojuego clásico. Perfecta para gamers."],
+    [1938885, "Set de adornos de Snoopy (6 piezas)", "Seis adornos a todo color, listos para colgar con listón."],
+    [869077, "Adorno de Snoopy navideño", "Snoopy con su gorrito de Navidad para colgar en el árbol."],
+    [3222199, "Esferas navideñas (set de 9)", "Nueve diseños distintos de esferas para decorar tu árbol."],
+    [1958147, "Estrellas de invierno (set)", "Juego de estrellas decorativas para el árbol o la ventana."],
+    [2011443, "Adorno espiral", "Diseño moderno y minimalista, ligero y elegante."],
+    [3354693, "Adorno personalizado con nombre", "Con el apellido de tu familia o el nombre que quieras."],
+  ]},
+  { id: "cocina", name: "Cocina y repostería", c: "#a0601a", items: [
+    [1951493, "Cortadores para casita de jengibre (set completo)", "Todas las piezas para armar tu propia casita de galleta."],
+    [2033555, "Cortadores del Grinch", "Cortadores de galletas con los personajes del Grinch."],
+    [3405783, "Cortadores de hombre de jengibre", "El clásico muñequito de jengibre en varios tamaños."],
+    [1771752, "Cortador de Santa y reno", "Para galletas y también para jugar con plastilina."],
+    [756926, "Cortadores de invierno", "Set con figuras de invierno y Navidad para galletas."],
+    [3292721, "Cortadores de otoño", "Colección de figuras de otoño: hojas, calabazas y más."],
+    [3368522, "Cortador y sello de Acción de Gracias", "Corta la galleta y marca el diseño en la masa al mismo tiempo."],
+  ]},
+  { id: "hogar", name: "Mesa y hogar", c: "#1f6e4a", items: [
+    [3433680, "Servilletero navideño", "Árbol, casita y estrellas para decorar tu mesa en Navidad."],
+    [802982, "Posavasos navideños", "Set de posavasos con diseños de Navidad."],
+  ]},
+  { id: "regalos", name: "Regalos y llaveros", c: "#8e3b8a", items: [
+    [1102140, "Marco de foto con canción de Spotify", "Marco estilo foto instantánea con el código de la canción que elijas. Ideal para regalar."],
+    [880031, "Llavero NFC de Instagram", "Acerca el celular y se abre tu perfil de Instagram."],
+    [3261826, "Llavero de casco de construcción", "Con nombre personalizado. Ideal para ingenieros y arquitectos."],
+  ]},
+  { id: "herramientas", name: "Herramientas y accesorios", c: "#2c5d8f", items: [
+    [3214582, "Sello personalizado de marca", "Sello con tu logo, iniciales o nombre para marcar tus productos artesanales."],
+    [2861794, "Clip para lentes en la visera del carro", "Tus lentes de sol siempre a la mano."],
+    [171811, "Soporte GoPro para casco", "Monta tu cámara GoPro en el casco."],
+    [761912, "Marco vertical para GoPro", "Graba en vertical, perfecto para reels y TikTok."],
+  ]},
+];
+
+// numeración y paginación (portada = 1, índice = 2)
+let n = 0, page = 3;
+const pages = [];
+for (const cat of cats) {
+  cat.items = cat.items.map(([id, name, desc]) => ({ id, name, desc, n: ++n }));
+  cat.page = page;
+  for (let i = 0; i < cat.items.length; i += 4) {
+    const chunk = cat.items.slice(i, i + 4);
+    chunk.forEach(it => it.page = page);
+    pages.push({ cat, chunk, first: i === 0, page: page++ });
+  }
+}
+const total = page - 1;
+const wa = txt => `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const foot = p => `<div class="foot"><span><b>${BRAND}</b> · WhatsApp ${WA_SHOW}</span><a class="back" href="#indice">↑ Volver al índice</a><span>${p} / ${total}</span></div>`;
+
+let html = "";
+
+// Portada
+const collage = [1938885, 1951493, 802982, 1102140];
+html += `<section class="page cover">
+  <div class="cover-collage">${collage.map(id => `<img src="../img/${id}.webp">`).join("")}</div>
+  <div class="cover-body">
+    <div style="display:flex;align-items:center;gap:7mm"><div class="logo" style="margin:0">HCC</div><div class="brand">HC <span>Customs</span></div></div>
+    <div class="tagline">Catálogo de piezas impresas en 3D</div>
+    <a class="cover-hint" href="#indice">Ver el índice →</a>
+    <div class="cover-meta">
+      <p>Adornos, cortadores de galletas,<br>regalos personalizados y accesorios.<br>Impreso en Honduras.</p>
+      <a class="wa-btn" href="${wa(`Hola ${BRAND}, vi su catálogo y quiero hacer un pedido.`)}">WhatsApp ${WA_SHOW}</a>
+    </div>
+  </div>
+</section>`;
+
+// Índice
+html += `<section class="page" id="indice">
+  <h1 class="title">Índice</h1>
+  <p class="subtitle">Toca una categoría o un producto para ir directo a su página.</p>
+  <div class="toc-cats">
+  ${cats.map((cat, i) => `<div class="toc-cat${i === cats.length - 1 && cats.length % 2 ? " toc-wide" : ""}" style="--c:${cat.c}">
+      <a class="cat-link" href="#${cat.id}">${cat.name}<small>pág. ${cat.page}</small></a>
+      <ul>${cat.items.map(it => `<li><a href="#p${it.n}"><span class="n">${it.n}</span><span class="name">${esc(it.name)}</span><span class="pg">${it.page}</span></a></li>`).join("")}</ul>
+    </div>`).join("")}
+  </div>
+  <p class="toc-note">Las fotos son de referencia: los colores se pueden elegir. Para precios y pedidos, toca el botón verde de cada producto o escríbenos al WhatsApp <b>${WA_SHOW}</b>.</p>
+  ${foot(2)}
+</section>`;
+
+// Productos
+for (const pg of pages) {
+  const { cat } = pg;
+  html += `<section class="page" style="--c:${cat.c}"${pg.first ? ` id="${cat.id}"` : ""}>
+    <div class="cat-head"><div class="bar"></div><h2>${cat.name}</h2>${pg.first ? "" : `<span class="cont">(continuación)</span>`}</div>
+    <div class="grid">
+    ${pg.chunk.map(it => `<div class="card" id="p${it.n}">
+        <div class="img"><img src="../img/${it.id}.webp"><span class="num">#${it.n}</span></div>
+        <div class="info">
+          <h3>${esc(it.name)}</h3>
+          <p>${esc(it.desc)}</p>
+          <a class="order" href="${wa(`Hola ${BRAND}, me interesa el #${it.n}: ${it.name}`)}">Pedir por WhatsApp →</a>
+        </div>
+      </div>`).join("")}
+    </div>
+    ${foot(pg.page)}
+  </section>`;
+}
+
+document.getElementById("root").innerHTML = html;
+
+// Convierte las fotos (WebP) a JPEG comprimido para que el PDF pese poco
+document.querySelectorAll("img").forEach(img => {
+  const go = () => {
+    try {
+      const max = 800, s = Math.min(1, max / img.naturalWidth);
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+      const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height);
+      ctx.drawImage(img, 0, 0, c.width, c.height);
+      img.onload = null; img.src = c.toDataURL("image/jpeg", 0.8);
+    } catch (e) {}
+  };
+  img.complete && img.naturalWidth ? go() : (img.onload = go);
+});
+</script>
+</body>
+</html>

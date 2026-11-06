@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Piezas impresas en 3D en Honduras: adornos navideños, cortadores de galletas, regalos personalizados y accesorios. Pedidos por WhatsApp 8797-3798.">
+<meta property="og:title" content="HC Customs · Catálogo de impresión 3D">
+<meta property="og:description" content="Adornos, cortadores de galletas, regalos personalizados y accesorios. Pedidos por WhatsApp.">
+<meta property="og:image" content="https://hccustomshn.github.io/img/og.png">
+<meta property="og:url" content="https://hccustomshn.github.io/">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>HC Customs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: black brand band on top, light gallery of printed pieces below, filter chips stick under the header */
+:root {
+  --ink: #0e0e0e;
+  --paper: #f4f4f1;
+  --card: #ffffff;
+  --line: #dcdcd6;
+  --muted: #5d5d57;
+  --on-ink: #ffffff;
+  --on-ink-muted: #a9a9a2;
+  --wa: #1fbf5c;
+  --wa-ink: #06260f;
+  --display: "Archivo", "Arial Black", Arial, sans-serif;
+  --body: "DM Sans", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+
+/* Header + hero */
+.band { background: var(--ink); color: var(--on-ink); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+.mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo { width: 44px; height: 44px; display: grid; place-items: center; background: #000; color: #fff; border: 2px solid var(--on-ink); border-radius: 6px; font-family: var(--display); font-weight: 900; font-size: 14px; letter-spacing: .04em; }
+.mark span { font-family: var(--display); font-weight: 700; font-size: 18px; letter-spacing: .01em; }
+.wa { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: var(--wa-ink); font-weight: 700; text-decoration: none; padding: 10px 16px; border-radius: 999px; font-size: 15px; white-space: nowrap; }
+.wa:hover { filter: brightness(1.08); }
+.wa:focus-visible, .chip:focus-visible, .order:focus-visible { outline: 3px solid #7aa7ff; outline-offset: 2px; }
+.wa svg { width: 18px; height: 18px; flex: none; }
+
+.hero { padding-block: 40px 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.hero h1 { font-family: var(--display); font-weight: 900; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+.hero p { color: var(--on-ink-muted); font-size: 18px; max-width: 34ch; margin: 18px 0 26px; }
+.hero .layers { font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--on-ink-muted); margin-bottom: 14px; }
+.mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mosaic img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; display: block; }
+.mosaic img:nth-child(1) { grid-row: span 2; aspect-ratio: auto; height: 100%; }
+
+/* Filter chips */
+.filters { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding-block: 12px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 500 14px var(--body); padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.chip small { color: inherit; opacity: .6; margin-left: 4px; font-variant-numeric: tabular-nums; }
+
+/* Catalog */
+main { padding-block: 32px 64px; }
+.cat { margin-bottom: 48px; }
+.cat h2 { font-family: var(--display); font-weight: 900; font-size: 28px; letter-spacing: -.01em; margin: 0 0 4px; }
+.cat .sub { color: var(--muted); margin: 0 0 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.item { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.item .ph { position: relative; aspect-ratio: 4 / 3; background: var(--line); }
+.item .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.item .no { position: absolute; top: 10px; left: 10px; background: var(--ink); color: var(--on-ink); font: 700 13px var(--display); padding: 3px 9px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+.item .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.item h3 { font-family: var(--display); font-weight: 700; font-size: 17px; line-height: 1.25; margin: 0; text-wrap: balance; }
+.item p { color: var(--muted); font-size: 14px; margin: 0; flex: 1; }
+.order { align-self: flex-start; margin-top: 8px; display: inline-flex; align-items: center; gap: 6px; background: var(--wa); color: var(--wa-ink); font-weight: 700; font-size: 14px; text-decoration: none; padding: 8px 14px; border-radius: 999px; }
+.order:hover { filter: brightness(1.08); }
+
+/* How to order */
+.how { background: var(--ink); color: var(--on-ink); }
+.how .wrap { padding-block: 48px; }
+.how h2 { font-family: var(--display); font-weight: 900; font-size: 28px; margin: 0 0 24px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; list-style: none; padding: 0; margin: 0; counter-reset: s; }
+.steps li { counter-increment: s; border-top: 1px solid #333; padding-top: 16px; color: var(--on-ink-muted); }
+.steps li::before { content: "Paso " counter(s); display: block; font: 700 12px var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--on-ink); margin-bottom: 6px; }
+.steps b { color: var(--on-ink); }
+.contact { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.num { font: 700 22px var(--display); letter-spacing: .02em; user-select: all; }
+.copy { background: transparent; color: var(--on-ink); border: 1px solid #444; border-radius: 999px; padding: 8px 14px; font: 500 14px var(--body); cursor: pointer; }
+footer { background: var(--ink); color: var(--on-ink-muted); font-size: 13px; border-top: 1px solid #222; }
+footer .wrap { padding-block: 20px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; padding-block: 16px 36px; gap: 28px; }
+  .steps { grid-template-columns: 1fr; }
+  .mark span { display: none; }
+}
+@media (max-width: 420px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .item .body { padding: 10px 12px 12px; }
+  .item h3 { font-size: 15px; }
+  .item p { display: none; }
+  .order { font-size: 13px; padding: 7px 11px; }
+}
+@media (prefers-reduced-motion: no-preference) { .item { transition: transform .15s ease; } .item:hover { transform: translateY(-2px); } }
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap top">
+    <a class="mark" href="#"><div class="logo">HCC</div><span>HC Customs</span></a>
+    <a class="wa" id="waTop" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+      8797-3798
+    </a>
+  </div>
+  <div class="wrap hero">
+    <div>
+      <div class="layers">Impresión 3D · Hecho en Honduras</div>
+      <h1>Piezas impresas capa por capa, a tu gusto.</h1>
+      <p>Adornos navideños, cortadores de galletas, regalos personalizados y accesorios. Tú eliges el color.</p>
+      <a class="wa" id="waHero" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+        Pedir por WhatsApp
+      </a>
+    </div>
+    <div class="mosaic">
+      <img src="img/1938885.webp" alt="Set de adornos de Snoopy">
+      <img src="img/1951493.webp" alt="Cortadores para casita de jengibre">
+      <img src="img/1102140.webp" alt="Marco de foto con canción de Spotify">
+    </div>
+  </div>
+</div>
+
+<nav class="filters" aria-label="Categorías">
+  <div class="wrap chips" id="chips"></div>
+</nav>
+
+<main class="wrap" id="catalog"></main>
+
+<section class="how" id="pedir">
+  <div class="wrap">
+    <h2>Cómo pedir</h2>
+    <ol class="steps">
+      <li><b>Elige tu pieza</b> y anota su número (por ejemplo, #9).</li>
+      <li><b>Escríbenos por WhatsApp</b> con el número. Te damos el precio al momento.</li>
+      <li><b>Escoge el color</b> y coordinamos la entrega o la recogida.</li>
+    </ol>
+    <div class="contact">
+      <span class="num" id="num">8797-3798</span>
+      <button class="copy" id="copyBtn" type="button">Copiar número</button>
+      <a class="wa" id="waBottom" href="#">Abrir WhatsApp</a>
+      <a class="copy" href="catalogo-hc-customs.pdf" download style="text-decoration:none">Descargar catálogo (PDF)</a>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© 2026 HC Customs</span><span>Las fotos son de referencia; los colores se pueden elegir.</span></div></footer>
+
+<script>
+const WA = "50487973798";
+const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+const cats = [
+  { id: "adornos", name: "Adornos navideños", sub: "Para el árbol y la decoración de temporada.", items: [
+    [772705, "Estrella de Mario 64 para el árbol", "Estrella para la punta del árbol, inspirada en el videojuego clásico."],
+    [1938885, "Set de adornos de Snoopy (6 piezas)", "Seis adornos a todo color, listos para colgar con listón."],
+    [869077, "Adorno de Snoopy navideño", "Snoopy con su gorrito de Navidad para colgar en el árbol."],
+    [3222199, "Esferas navideñas (set de 9)", "Nueve diseños distintos de esferas para decorar tu árbol."],
+    [1958147, "Estrellas de invierno (set)", "Estrellas decorativas para el árbol o la ventana."],
+    [2011443, "Adorno espiral", "Diseño moderno y minimalista, ligero y elegante."],
+    [3354693, "Adorno personalizado con nombre", "Con el apellido de tu familia o el nombre que quieras."],
+  ]},
+  { id: "cocina", name: "Cocina y repostería", sub: "Cortadores para galletas, masa y plastilina.", items: [
+    [1951493, "Cortadores para casita de jengibre (set completo)", "Todas las piezas para armar tu propia casita de galleta."],
+    [2033555, "Cortadores del Grinch", "Cortadores de galletas con los personajes del Grinch."],
+    [3405783, "Cortadores de hombre de jengibre", "El clásico muñequito de jengibre en varios tamaños."],
+    [1771752, "Cortador de Santa y reno", "Para galletas y también para jugar con plastilina."],
+    [756926, "Cortadores de invierno", "Figuras de invierno y Navidad para galletas."],
+    [3292721, "Cortadores de otoño", "Hojas, calabazas y más figuras de otoño."],
+    [3368522, "Cortador y sello de Acción de Gracias", "Corta la galleta y marca el diseño al mismo tiempo."],
+  ]},
+  { id: "hogar", name: "Mesa y hogar", sub: "Detalles para la mesa en temporada.", items: [
+    [3433680, "Servilletero navideño", "Árbol, casita y estrellas para decorar tu mesa."],
+    [802982, "Posavasos navideños", "Set de posavasos con diseños de Navidad."],
+  ]},
+  { id: "regalos", name: "Regalos y llaveros", sub: "Personalizados con nombre, foto o canción.", items: [
+    [1102140, "Marco de foto con canción de Spotify", "Estilo foto instantánea con el código de la canción que elijas."],
+    [880031, "Llavero NFC de Instagram", "Acerca el celular y se abre tu perfil de Instagram."],
+    [3261826, "Llavero de casco de construcción", "Con nombre. Ideal para ingenieros y arquitectos."],
+  ]},
+  { id: "herramientas", name: "Herramientas y accesorios", sub: "Piezas útiles para el día a día.", items: [
+    [3214582, "Sello personalizado de marca", "Con tu logo, iniciales o nombre para marcar tus productos."],
+    [2861794, "Clip para lentes en la visera del carro", "Tus lentes de sol siempre a la mano."],
+    [171811, "Soporte GoPro para casco", "Monta tu cámara GoPro en el casco."],
+    [761912, "Marco vertical para GoPro", "Graba en vertical, perfecto para reels y TikTok."],
+  ]},
+];
+let n = 0;
+cats.forEach(c => c.items = c.items.map(([id, name, desc]) => ({ id, name, desc, n: ++n })));
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+
+const general = wa("Hola HC Customs, vi su catálogo y quiero hacer un pedido.");
+["waTop", "waHero", "waBottom"].forEach(id => document.getElementById(id).href = general);
+
+document.getElementById("catalog").innerHTML = cats.map(c => `
+  <section class="cat" data-cat="${c.id}">
+    <h2>${c.name}</h2><p class="sub">${c.sub}</p>
+    <div class="grid">${c.items.map(it => `
+      <article class="item">
+        <div class="ph"><img src="img/${it.id}.webp" alt="${esc(it.name)}" loading="lazy"><span class="no">#${it.n}</span></div>
+        <div class="body">
+          <h3>${esc(it.name)}</h3>
+          <p>${esc(it.desc)}</p>
+          <a class="order" href="${wa(`Hola HC Customs, me interesa el #${it.n}: ${it.name}`)}">Pedir →</a>
+        </div>
+      </article>`).join("")}
+    </div>
+  </section>`).join("");
+
+const chips = document.getElementById("chips");
+chips.innerHTML = `<button class="chip" type="button" data-f="todo">Todo<small>${n}</small></button>` +
+  cats.map(c => `<button class="chip" type="button" data-f="${c.id}">${c.name}<small>${c.items.length}</small></button>`).join("");
+
+function show(f) {
+  if (!cats.some(c => c.id === f)) f = "todo";
+  chips.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === f)));
+  document.querySelectorAll(".cat").forEach(s => s.hidden = f !== "todo" && s.dataset.cat !== f);
+}
+chips.addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  const f = b.dataset.f;
+  history.replaceState(null, "", f === "todo" ? location.pathname + location.search : "#" + f);
+  show(f);
+  document.querySelector(".filters").scrollIntoView({ block: "start" });
+});
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+show(location.hash.slice(1));
+
+document.getElementById("copyBtn").addEventListener("click", async e => {
+  const btn = e.currentTarget;
+  try { await navigator.clipboard.writeText("87973798"); btn.textContent = "Copiado"; }
+  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById("num")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Número seleccionado"; }
+  setTimeout(() => btn.textContent = "Copiar número", 2000);
+});
+</script>
+</body>
+</html>
