@@ -67,49 +67,17 @@
 </head>
 <body>
 <div id="root"></div>
+<script src="../productos.js"></script>
 <script>
 const WA = "50487973798";
 const WA_SHOW = "8797-3798";
 const BRAND = "HC Customs";
 
-const cats = [
-  { id: "adornos", name: "Adornos navideños", c: "#b3261e", items: [
-    [772705, "Estrella de Mario 64 para el árbol", "Estrella para la punta del árbol, inspirada en el videojuego clásico. Perfecta para gamers."],
-    [1938885, "Set de adornos de Snoopy (6 piezas)", "Seis adornos a todo color, listos para colgar con listón."],
-    [869077, "Adorno de Snoopy navideño", "Snoopy con su gorrito de Navidad para colgar en el árbol."],
-    [3222199, "Esferas navideñas (set de 9)", "Nueve diseños distintos de esferas para decorar tu árbol."],
-    [1958147, "Estrellas de invierno (set)", "Juego de estrellas decorativas para el árbol o la ventana."],
-    [2011443, "Adorno espiral", "Diseño moderno y minimalista, ligero y elegante."],
-    [3354693, "Adorno personalizado con nombre", "Con el apellido de tu familia o el nombre que quieras."],
-  ]},
-  { id: "cocina", name: "Cocina y repostería", c: "#a0601a", items: [
-    [1951493, "Cortadores para casita de jengibre (set completo)", "Todas las piezas para armar tu propia casita de galleta."],
-    [2033555, "Cortadores del Grinch", "Cortadores de galletas con los personajes del Grinch."],
-    [3405783, "Cortadores de hombre de jengibre", "El clásico muñequito de jengibre en varios tamaños."],
-    [1771752, "Cortador de Santa y reno", "Para galletas y también para jugar con plastilina."],
-    [756926, "Cortadores de invierno", "Set con figuras de invierno y Navidad para galletas."],
-    [3292721, "Cortadores de otoño", "Colección de figuras de otoño: hojas, calabazas y más."],
-    [3368522, "Cortador y sello de Acción de Gracias", "Corta la galleta y marca el diseño en la masa al mismo tiempo."],
-  ]},
-  { id: "hogar", name: "Mesa y hogar", c: "#1f6e4a", items: [
-    [3433680, "Servilletero navideño", "Árbol, casita y estrellas para decorar tu mesa en Navidad."],
-    [802982, "Posavasos navideños", "Set de posavasos con diseños de Navidad."],
-  ]},
-  { id: "regalos", name: "Regalos y llaveros", c: "#8e3b8a", items: [
-    [1102140, "Marco de foto con canción de Spotify", "Marco estilo foto instantánea con el código de la canción que elijas. Ideal para regalar."],
-    [880031, "Llavero NFC de Instagram", "Acerca el celular y se abre tu perfil de Instagram."],
-    [3261826, "Llavero de casco de construcción", "Con nombre personalizado. Ideal para ingenieros y arquitectos."],
-  ]},
-  { id: "herramientas", name: "Herramientas y accesorios", c: "#2c5d8f", items: [
-    [3214582, "Sello personalizado de marca", "Sello con tu logo, iniciales o nombre para marcar tus productos artesanales."],
-    [2861794, "Clip para lentes en la visera del carro", "Tus lentes de sol siempre a la mano."],
-    [171811, "Soporte GoPro para casco", "Monta tu cámara GoPro en el casco."],
-    [761912, "Marco vertical para GoPro", "Graba en vertical, perfecto para reels y TikTok."],
-  ]},
-];
+const D = window.HCC;
+const cats = D.categorias.map(c => ({ id: c.id, name: c.nombre, c: c.color, items: D.productos.filter(p => p.cat === c.id).map(p => [p.id, p.nombre, p.desc]) })).filter(c => c.items.length);
+const PICS = Object.fromEntries(D.productos.map(p => [p.id, p.fotos]));
 
 // numeración y paginación (portada = 1, índice = 2)
-const PICS = { 171811: 3, 756926: 6, 761912: 7, 772705: 5, 802982: 13, 869077: 1, 880031: 3, 1102140: 9, 1771752: 3, 1938885: 7, 1951493: 9, 1958147: 9, 2011443: 8, 2033555: 6, 2861794: 6, 3214582: 3, 3222199: 5, 3261826: 7, 3292721: 3, 3354693: 8, 3368522: 5, 3405783: 4, 3433680: 17 };
 const SITE = "https://hc-customs-hn.github.io/";
 let n = 0, page = 3;
 const pages = [];

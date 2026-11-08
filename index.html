@@ -180,48 +180,17 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
 </section>
 <footer><div class="wrap"><span>© 2026 HC Customs</span><span>Las fotos son de referencia; los colores se pueden elegir.</span></div></footer>
 
+<script src="productos.js"></script>
 <script>
 const WA = "50487973798";
 const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
-const cats = [
-  { id: "adornos", name: "Adornos navideños", sub: "Para el árbol y la decoración de temporada.", items: [
-    [772705, "Estrella de Mario 64 para el árbol", "Estrella para la punta del árbol, inspirada en el videojuego clásico."],
-    [1938885, "Set de adornos de Snoopy (6 piezas)", "Seis adornos a todo color, listos para colgar con listón."],
-    [869077, "Adorno de Snoopy navideño", "Snoopy con su gorrito de Navidad para colgar en el árbol."],
-    [3222199, "Esferas navideñas (set de 9)", "Nueve diseños distintos de esferas para decorar tu árbol."],
-    [1958147, "Estrellas de invierno (set)", "Estrellas decorativas para el árbol o la ventana."],
-    [2011443, "Adorno espiral", "Diseño moderno y minimalista, ligero y elegante."],
-    [3354693, "Adorno personalizado con nombre", "Con el apellido de tu familia o el nombre que quieras."],
-  ]},
-  { id: "cocina", name: "Cocina y repostería", sub: "Cortadores para galletas, masa y plastilina.", items: [
-    [1951493, "Cortadores para casita de jengibre (set completo)", "Todas las piezas para armar tu propia casita de galleta."],
-    [2033555, "Cortadores del Grinch", "Cortadores de galletas con los personajes del Grinch."],
-    [3405783, "Cortadores de hombre de jengibre", "El clásico muñequito de jengibre en varios tamaños."],
-    [1771752, "Cortador de Santa y reno", "Para galletas y también para jugar con plastilina."],
-    [756926, "Cortadores de invierno", "Figuras de invierno y Navidad para galletas."],
-    [3292721, "Cortadores de otoño", "Hojas, calabazas y más figuras de otoño."],
-    [3368522, "Cortador y sello de Acción de Gracias", "Corta la galleta y marca el diseño al mismo tiempo."],
-  ]},
-  { id: "hogar", name: "Mesa y hogar", sub: "Detalles para la mesa en temporada.", items: [
-    [3433680, "Servilletero navideño", "Árbol, casita y estrellas para decorar tu mesa."],
-    [802982, "Posavasos navideños", "Set de posavasos con diseños de Navidad."],
-  ]},
-  { id: "regalos", name: "Regalos y llaveros", sub: "Personalizados con nombre, foto o canción.", items: [
-    [1102140, "Marco de foto con canción de Spotify", "Estilo foto instantánea con el código de la canción que elijas."],
-    [880031, "Llavero NFC de Instagram", "Acerca el celular y se abre tu perfil de Instagram."],
-    [3261826, "Llavero de casco de construcción", "Con nombre. Ideal para ingenieros y arquitectos."],
-  ]},
-  { id: "herramientas", name: "Herramientas y accesorios", sub: "Piezas útiles para el día a día.", items: [
-    [3214582, "Sello personalizado de marca", "Con tu logo, iniciales o nombre para marcar tus productos."],
-    [2861794, "Clip para lentes en la visera del carro", "Tus lentes de sol siempre a la mano."],
-    [171811, "Soporte GoPro para casco", "Monta tu cámara GoPro en el casco."],
-    [761912, "Marco vertical para GoPro", "Graba en vertical, perfecto para reels y TikTok."],
-  ]},
-];
-// Cantidad de fotos por modelo (img/<id>-<0..n-1>.webp)
-const PICS = { 171811: 3, 756926: 6, 761912: 7, 772705: 5, 802982: 13, 869077: 1, 880031: 3, 1102140: 9, 1771752: 3, 1938885: 7, 1951493: 9, 1958147: 9, 2011443: 8, 2033555: 6, 2861794: 6, 3214582: 3, 3222199: 5, 3261826: 7, 3292721: 3, 3354693: 8, 3368522: 5, 3405783: 4, 3433680: 17 };
+// Los productos viven en productos.json (productos.js se genera de ahí con el script)
+const D = window.HCC;
+const cats = D.categorias.map(c => ({ id: c.id, name: c.nombre, sub: c.sub, items: [] }));
+const PICS = {};
 let n = 0;
-cats.forEach(c => c.items = c.items.map(([id, name, desc]) => ({ id, name, desc, n: ++n })));
+cats.forEach(c => D.productos.filter(p => p.cat === c.id).forEach(p => { PICS[p.id] = p.fotos; c.items.push({ id: p.id, name: p.nombre, desc: p.desc, n: ++n }); }));
+cats.splice(0, cats.length, ...cats.filter(c => c.items.length));
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 
 const general = wa("Hola HC Customs, vi su catálogo y quiero hacer un pedido.");
