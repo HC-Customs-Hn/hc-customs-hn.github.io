@@ -288,6 +288,13 @@ window.HCC = {
                           "nombre":  "Sapphire Legacy – Cuenco de adorno navideño colgante",
                           "desc":  "Sapphire Legacy – Cuenco colgante de bola navideña",
                           "fotos":  9
+                      },
+                      {
+                          "id":  3554029,
+                          "cat":  "regalos",
+                          "nombre":  "Llavero de Snoopy – Arte de fans",
+                          "desc":  "Un llavero de Snoopy caminante originalmente creado como regalo y compartido para que cualquiera pueda imprimir uno.",
+                          "fotos":  5
                       }
                   ]
 };
