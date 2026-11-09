@@ -302,6 +302,13 @@ window.HCC = {
                           "nombre":  "Llavero de graduación personalizable - Flork",
                           "desc":  "Llavero de graduación personalizable",
                           "fotos":  5
+                      },
+                      {
+                          "id":  3401363,
+                          "cat":  "herramientas",
+                          "nombre":  "KARIN - Lámpara de mesa",
+                          "desc":  "KARIN - Lámpara de mesa",
+                          "fotos":  6
                       }
                   ]
 };
