@@ -295,6 +295,13 @@ window.HCC = {
                           "nombre":  "Llavero de Snoopy – Arte de fans",
                           "desc":  "Un llavero de Snoopy caminante originalmente creado como regalo y compartido para que cualquiera pueda imprimir uno.",
                           "fotos":  5
+                      },
+                      {
+                          "id":  3131344,
+                          "cat":  "regalos",
+                          "nombre":  "Llavero de graduación personalizable - Flork",
+                          "desc":  "Llavero de graduación personalizable",
+                          "fotos":  5
                       }
                   ]
 };
