@@ -29,6 +29,18 @@ window.HCC = {
                            "nombre":  "Herramientas y accesorios",
                            "sub":  "Piezas útiles para el día a día.",
                            "color":  "#2c5d8f"
+                       },
+                       {
+                           "id":  "herramientas-para-hogar",
+                           "nombre":  "Herramientas para Hogar",
+                           "sub":  "Herramientas",
+                           "color":  "#6b4e16"
+                       },
+                       {
+                           "id":  "adornos",
+                           "nombre":  "Adornos",
+                           "sub":  "",
+                           "color":  "#0f6b6b"
                        }
                    ],
     "productos":  [
@@ -192,6 +204,90 @@ window.HCC = {
                           "nombre":  "Marco vertical para GoPro",
                           "desc":  "Graba en vertical, perfecto para reels y TikTok.",
                           "fotos":  7
+                      },
+                      {
+                          "id":  107381,
+                          "cat":  "herramientas",
+                          "nombre":  "Soporte Vertical para Playstation 5 Slim y Pro",
+                          "desc":  "Soporte vertical para PS5 Slim",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  1275739,
+                          "cat":  "herramientas-para-hogar",
+                          "nombre":  "Pala para arena de gato (agujeros grandes, medianos y pequeños)",
+                          "desc":  "Una pala para arena de gato de uso personal con tres tamaños de orificios grande mediano y pequeño que permite filtrar heces de distintos tamaños y.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  1178208,
+                          "cat":  "herramientas",
+                          "nombre":  "Llavero de la Copa Stanley",
+                          "desc":  "Observa mi .v2 del Tumbler",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  2845870,
+                          "cat":  "herramientas",
+                          "nombre":  "Llavero con Soporte para Anillos Floral",
+                          "desc":  "¡Nunca más pierdas tus anillos!",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  3152252,
+                          "cat":  "herramientas",
+                          "nombre":  "Soporte para Celular V2 – Impresión Rápida",
+                          "desc":  "Les comparto la versión 2 de mi soporte para celular, diseñada para ser más práctica, resistente y cómoda para el uso diario.",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  2812588,
+                          "cat":  "herramientas",
+                          "nombre":  "llavero mancuernas",
+                          "desc":  "Personaliza estos llaveros tipo mancuerna completamente a tu gusto.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2901919,
+                          "cat":  "regalos",
+                          "nombre":  "Estuche de pintalabios con adorno 2 - llavero",
+                          "desc":  "Un accesorio lindo y práctico que es mucho más que un simple estuche para labial Este soporte compacto con forma de llavero mantiene tu labial.",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  3457194,
+                          "cat":  "adornos",
+                          "nombre":  "Sistema de exhibición de pared para Pokemon / Magic",
+                          "desc":  "Un sistema de exhibición montado en pared diseñado para tu colección.",
+                          "fotos":  14
+                      },
+                      {
+                          "id":  2894053,
+                          "cat":  "herramientas",
+                          "nombre":  "Soporte de manillar para GoPro, DJI, Insta360, ActionCam",
+                          "desc":  "Soporte compatible con GoPro, DJI Osma, Insta360, Action Cam",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2870508,
+                          "cat":  "regalos",
+                          "nombre":  "Collares de mancuernas roscados de cierre rápido, 5 tamaños",
+                          "desc":  "Licencia comercial disponible aquí",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  3398207,
+                          "cat":  "regalos",
+                          "nombre":  "Marco de foto Polaroid de recién casados",
+                          "desc":  "Marco de foto Polaroid de recién casados",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  3538580,
+                          "cat":  "adornos",
+                          "nombre":  "Sapphire Legacy – Cuenco de adorno navideño colgante",
+                          "desc":  "Sapphire Legacy – Cuenco colgante de bola navideña",
+                          "fotos":  9
                       }
                   ]
 };
