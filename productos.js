@@ -309,6 +309,13 @@ window.HCC = {
                           "nombre":  "KARIN - Lámpara de mesa",
                           "desc":  "KARIN - Lámpara de mesa",
                           "fotos":  6
+                      },
+                      {
+                          "id":  1608419,
+                          "cat":  "hogar",
+                          "nombre":  "Pantallas para lámparas Ikea HÖGVIND",
+                          "desc":  "Un poco cansado de las pantallas de cristal para mi lámpara colgante IKEA Högvind, ¡así que hice estas opciones!",
+                          "fotos":  2
                       }
                   ]
 };
