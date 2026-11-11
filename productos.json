@@ -41,6 +41,12 @@
                            "nombre":  "Adornos",
                            "sub":  "",
                            "color":  "#0f6b6b"
+                       },
+                       {
+                           "id":  "marcadores-bookmarks",
+                           "nombre":  "Marcadores/bookmarks",
+                           "sub":  "",
+                           "color":  "#7a2e4d"
                        }
                    ],
     "productos":  [
@@ -316,6 +322,111 @@
                           "nombre":  "Pantallas para lámparas Ikea HÖGVIND",
                           "desc":  "Un poco cansado de las pantallas de cristal para mi lámpara colgante IKEA Högvind, ¡así que hice estas opciones!",
                           "fotos":  2
+                      },
+                      {
+                          "id":  2002591,
+                          "cat":  "regalos",
+                          "nombre":  "Llavero de corazón de piezas de construcción",
+                          "desc":  "Dos llaveros que se unen para formar un corazón \u003c3",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2234929,
+                          "cat":  "regalos",
+                          "nombre":  "El Llavero QuickDraw - Mini Pistola y Funda",
+                          "desc":  "Llevar tus llaves ahora es táctico.",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  2245423,
+                          "cat":  "regalos",
+                          "nombre":  "Llavero de Fórmula 1",
+                          "desc":  "Elegante y ligero llavero con el logo de Fórmula 1, perfecto para los aficionados al automovilismo.",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  2738986,
+                          "cat":  "regalos",
+                          "nombre":  "Soporte para bálsamo labial con corazones",
+                          "desc":  "Soporte para bálsamo labial de corazón 💗 (Llavero)",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  2832193,
+                          "cat":  "marcadores-bookmarks",
+                          "nombre":  "Juego de marcadores - 7 diseños de bosque",
+                          "desc":  "Un conjunto de 7 marcapáginas de bosque bellamente detallados con un cuervo, un ciervo, una cabaña de montaña, un árbol de hoja perenne, setas, piñas.",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  2385153,
+                          "cat":  "regalos",
+                          "nombre":  "Marcador de corazón",
+                          "desc":  "❤️ Marcapáginas de Corazón (también conocido como “LoveMark”)",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  1888511,
+                          "cat":  "marcadores-bookmarks",
+                          "nombre":  "Marcapáginas - Regla de lectura (Apto para disléxicos)",
+                          "desc":  "¿Luchas tú o alguien más con la lectura y necesitas una herramienta que te ayude a concentrarte en el texto del libro?",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2431124,
+                          "cat":  "marcadores-bookmarks",
+                          "nombre":  "Marcapáginas de bala dorada de Harry Potter",
+                          "desc":  "",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  1335864,
+                          "cat":  "marcadores-bookmarks",
+                          "nombre":  "Marcador de Snoopy",
+                          "desc":  "Puedes modificar el tamaño a tu gusto",
+                          "fotos":  2
+                      },
+                      {
+                          "id":  2640089,
+                          "cat":  "marcadores-bookmarks",
+                          "nombre":  "Soporte para páginas de libro | Abrelibros con una sola mano",
+                          "desc":  "Echa un vistazo a mis modelos recién lanzados:",
+                          "fotos":  8
+                      },
+                      {
+                          "id":  2345033,
+                          "cat":  "regalos",
+                          "nombre":  "Colección de Clickers Pokeball, AMS no es necesario",
+                          "desc":  "Por favor, utiliza las versiones V2, ya que estas no requieren soportes o los requieren de forma mínima",
+                          "fotos":  10
+                      },
+                      {
+                          "id":  1560277,
+                          "cat":  "regalos",
+                          "nombre":  "Clicador de Oreo",
+                          "desc":  "Este click con forma de galleta de oreo será la envidia de los otros clicker, imprímelo y disfruta de las pulsaciones.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  1496136,
+                          "cat":  "regalos",
+                          "nombre":  "Disparadores de Fortnite",
+                          "desc":  "Disparadores de Fortnite",
+                          "fotos":  2
+                      },
+                      {
+                          "id":  2885464,
+                          "cat":  "regalos",
+                          "nombre":  "Llavero-Clicker OREO x BTS — Relleno Bicolor",
+                          "desc":  "Llavero-Clicker OREO x BTS — Relleno Bicolor",
+                          "fotos":  8
+                      },
+                      {
+                          "id":  1373969,
+                          "cat":  "regalos",
+                          "nombre":  "Star Wars - Clicker Fidget 2",
+                          "desc":  "¡Que la Fuerza te acompañe!",
+                          "fotos":  7
                       }
                   ]
 }
