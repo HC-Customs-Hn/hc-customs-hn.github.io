@@ -47,6 +47,18 @@ window.HCC = {
                            "nombre":  "Marcadores/bookmarks",
                            "sub":  "",
                            "color":  "#7a2e4d"
+                       },
+                       {
+                           "id":  "soportes-y-tecnologia",
+                           "nombre":  "Soportes y Tecnologia",
+                           "sub":  "",
+                           "color":  "#3d5a1f"
+                       },
+                       {
+                           "id":  "herramientas-para-emprendimientos",
+                           "nombre":  "Herramientas para Emprendimientos",
+                           "sub":  "",
+                           "color":  "#5a3d8a"
                        }
                    ],
     "productos":  [
@@ -427,6 +439,153 @@ window.HCC = {
                           "nombre":  "Star Wars - Clicker Fidget 2",
                           "desc":  "¡Que la Fuerza te acompañe!",
                           "fotos":  7
+                      },
+                      {
+                          "id":  3560074,
+                          "cat":  "adornos",
+                          "nombre":  "Adorno de Árbol de Navidad Hogwarts",
+                          "desc":  "Tres adornos navideños de Harry Potter que cuentan con las gafas redondas de Harry la cicatriz en forma de rayo y la bufanda Hedwig posada en una rama.",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  3568059,
+                          "cat":  "adornos",
+                          "nombre":  "Set de imanes de Navidad de Snoopy #2",
+                          "desc":  "Imanes de Cascanueces de Snoopy: Aquí",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  3568565,
+                          "cat":  "adornos",
+                          "nombre":  "Árbol de Navidad Moderno",
+                          "desc":  "Decoraciones navideñas modernistas con forma de árboles de Navidad, disponibles en tres tamaños diferentes",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  3495155,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Soporte de reloj con estrías",
+                          "desc":  "Soporte para reloj con textura de canales",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  3199471,
+                          "cat":  "hogar",
+                          "nombre":  "KORU - Lámpara de mesa",
+                          "desc":  "MembresíaConoce la Lámpara de mesa KORU.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  1272185,
+                          "cat":  "hogar",
+                          "nombre":  "LÁMPARA DE SUSPENSIÓN BOOFA",
+                          "desc":  "Finalmente compartimos nuestro primer proyecto, la Colección BOOFA.",
+                          "fotos":  11
+                      },
+                      {
+                          "id":  2642354,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Soporte de Teléfono Biónico",
+                          "desc":  "Una sinfonía perfecta de estética orgánica e ingeniería funcional, diseñada para el espacio de trabajo moderno.",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  1490705,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Agarradera compacta para controles JoyCon de Nintendo Switch 2",
+                          "desc":  "Versión 2 de este modelo ya disponible - haz clic aquí",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  1498275,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Inspirado en Joy-Con (Switch 2) - Princesa Peach",
+                          "desc":  "🎮 Personajes de Mario – Soporte para Joy-Con para Nintendo Switch 2 (Impresión 3D)",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  2913705,
+                          "cat":  "herramientas",
+                          "nombre":  "esponja de soporte de papel de lija",
+                          "desc":  "soporte para papel de lija",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  3158553,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Tirachinas Triple",
+                          "desc":  "Estilingue Ergonómico de Alta Resistencia (Tirador)",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  2500865,
+                          "cat":  "regalos",
+                          "nombre":  "Soporte de AirTag",
+                          "desc":  "Este soporte para AirTag está diseñado para ocultar tu AirTag a plena vista.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2777068,
+                          "cat":  "regalos",
+                          "nombre":  "Lanzador de Tapas de Botella con una Sola Mano",
+                          "desc":  "Single-hand bottle cap shooter",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  854047,
+                          "cat":  "hogar",
+                          "nombre":  "Diseño de pantalla de lámpara",
+                          "desc":  "Pantalla de lámpara de diseño único: estilo e innovación se unen",
+                          "fotos":  12
+                      },
+                      {
+                          "id":  1558788,
+                          "cat":  "regalos",
+                          "nombre":  "Hélice para Gorra - ¡Ajusta y Gira con Estilo!",
+                          "desc":  "Hélice para Gorra - ¡Ajusta y Gira con Estilo!",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  3420530,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Protector de zapato de escamas de dragón para motocicletas",
+                          "desc":  "Protector de zapato de escamas de dragón para motocicletas",
+                          "fotos":  8
+                      },
+                      {
+                          "id":  2861520,
+                          "cat":  "regalos",
+                          "nombre":  "Soporte de llavero para bálsamo labial Japandi",
+                          "desc":  "Soporte de bálsamo labial Japandi de dos piezas con un accesorio para llavero.",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  1087279,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Pequeño soporte para teléfono inteligente – diseño de impresión directa",
+                          "desc":  "A small and easy to use smartphone stand for your keychain!",
+                          "fotos":  10
+                      },
+                      {
+                          "id":  2111757,
+                          "cat":  "herramientas-para-emprendimientos",
+                          "nombre":  "Cortador de Papel de Regalo Deluxe - Estación de Envolver Regalos",
+                          "desc":  "Actualización 15/12: Se agregaron tres perfiles nuevos: un diseño de hombre de jengibre, un diseño de Hanukkah y un diseño en blanco para.",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  842004,
+                          "cat":  "regalos",
+                          "nombre":  "Pantalla de lámpara modular 19",
+                          "desc":  "Pantalla de lámpara modular",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2145100,
+                          "cat":  "hogar",
+                          "nombre":  "Pantalla Nifty Fifty (E27) Modular",
+                          "desc":  "Lámpara colgante “Nifty Fifty” para casquillos E27.",
+                          "fotos":  10
                       }
                   ]
 };
