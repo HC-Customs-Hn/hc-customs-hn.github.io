@@ -180,7 +180,7 @@ footer .wrap { padding-block: 20px; display: flex; justify-content: space-betwee
 </section>
 <footer><div class="wrap"><span>© 2026 HC Customs</span><span>Las fotos son de referencia; los colores se pueden elegir.</span></div></footer>
 
-<script src="productos.js"></script>
+<script>document.write('<script src="productos.js?v=' + Date.now() + '"></script>');</script>
 <script>
 const WA = "50487973798";
 const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
