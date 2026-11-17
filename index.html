@@ -187,9 +187,9 @@ const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 // Los productos viven en productos.json (productos.js se genera de ahí con el script)
 const D = window.HCC;
 const cats = D.categorias.map(c => ({ id: c.id, name: c.nombre, sub: c.sub, items: [] }));
-const PICS = {};
+const PICS = {}, EXT = {};
 let n = 0;
-cats.forEach(c => D.productos.filter(p => p.cat === c.id).forEach(p => { PICS[p.id] = p.fotos; c.items.push({ id: p.id, name: p.nombre, desc: p.desc, n: ++n }); }));
+cats.forEach(c => D.productos.filter(p => p.cat === c.id).forEach(p => { PICS[p.id] = p.fotos; EXT[p.id] = p.ext || "webp"; c.items.push({ id: p.id, name: p.nombre, desc: p.desc, n: ++n }); }));
 cats.splice(0, cats.length, ...cats.filter(c => c.items.length));
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
 
@@ -202,7 +202,7 @@ document.getElementById("catalog").innerHTML = cats.map(c => `
     <div class="grid">${c.items.map(it => `
       <article class="item">
         <div class="ph">
-          <div class="slides" data-n="${it.n}">${Array.from({ length: PICS[it.id] }, (_, i) => `<img src="img/${it.id}-${i}.webp" alt="${esc(it.name)}, foto ${i + 1}" loading="lazy" data-i="${i}">`).join("")}</div>
+          <div class="slides" data-n="${it.n}">${Array.from({ length: PICS[it.id] }, (_, i) => `<img src="img/${it.id}-${i}.${EXT[it.id]}" alt="${esc(it.name)}, foto ${i + 1}" loading="lazy" data-i="${i}">`).join("")}</div>
           <span class="no">#${it.n}</span>
           ${PICS[it.id] > 1 ? `<span class="count">1 / ${PICS[it.id]}</span>
           <button class="nav prev" type="button" aria-label="Foto anterior">‹</button>
@@ -256,7 +256,7 @@ function openLb(it, start) {
   lb.className = "lb"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true"); lb.setAttribute("aria-label", it.name);
   lb.innerHTML = `<div class="lb-top"><b>#${it.n} · ${esc(it.name)}</b><span class="lb-c"></span><button class="lb-close" type="button">Cerrar ✕</button></div>
     <div style="position:relative;flex:1;display:flex;min-height:0">
-      <div class="lb-strip">${Array.from({ length: total }, (_, i) => `<img src="img/${it.id}-${i}.webp" alt="${esc(it.name)}, foto ${i + 1}">`).join("")}</div>
+      <div class="lb-strip">${Array.from({ length: total }, (_, i) => `<img src="img/${it.id}-${i}.${EXT[it.id]}" alt="${esc(it.name)}, foto ${i + 1}">`).join("")}</div>
       ${total > 1 ? `<button class="nav prev" type="button" aria-label="Foto anterior">‹</button><button class="nav next" type="button" aria-label="Foto siguiente">›</button>` : ""}
     </div>
     <div class="lb-bottom"><a class="order" href="${wa(`Hola HC Customs, me interesa el #${it.n}: ${it.name}`)}">Pedir por WhatsApp →</a></div>`;

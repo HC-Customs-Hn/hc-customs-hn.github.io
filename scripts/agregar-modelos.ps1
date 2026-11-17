@@ -1,4 +1,4 @@
-﻿# HC Customs - Agregar modelos de MakerWorld
+﻿# HC Customs - Agregar modelos de MakerWorld y Cults3D
 # Lee los links de Modelos\links.txt y por cada uno:
 #   1. Crea Modelos\<Nombre>\ con todas las fotos en JPG, descripcion.txt (texto para Instagram) e info.txt
 #   2. Lo agrega a la web (productos.json + fotos en img\) y regenera el PDF
@@ -60,11 +60,12 @@ function Nombre-Carpeta($nombre, $id) {
   return $dir
 }
 
-# Convierte cualquier foto a JPG (máx. 1440 px de ancho, fondo blanco) para Instagram
-function Convertir-Jpg($origen, $destino) {
+# Convierte cualquier foto a JPG con fondo blanco (1440 px para Instagram, 800 px para la web)
+function Convertir-Jpg($origen, $destino, $max = 1440) {
+  $img = $null
   try {
     $img = [System.Drawing.Image]::FromFile($origen)
-    $w = [Math]::Min(1440, $img.Width); $h = [int]($img.Height * $w / $img.Width)
+    $w = [Math]::Min($max, $img.Width); $h = [int]($img.Height * $w / $img.Width)
     $bmp = New-Object System.Drawing.Bitmap($w, $h)
     $g = [System.Drawing.Graphics]::FromImage($bmp)
     $g.Clear([System.Drawing.Color]::White)
@@ -75,12 +76,76 @@ function Convertir-Jpg($origen, $destino) {
     $p.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter([System.Drawing.Imaging.Encoder]::Quality, [long]92)
     $bmp.Save($destino, $codec, $p)
     $g.Dispose(); $bmp.Dispose(); $img.Dispose()
-    Remove-Item $origen
     return $true
   } catch {
     if ($img) { $img.Dispose() }
     return $false
   }
+}
+
+# ---------- MakerWorld ----------
+function Get-ModeloMakerWorld($id) {
+  $d = Get-Text "https://makerworld.com/api/v1/design-service/design/$id" | ConvertFrom-Json
+  [pscustomobject]@{
+    id       = [int64]$id
+    fuente   = 'MakerWorld'
+    titulo   = $(if ($d.titleTranslated) { $d.titleTranslated.Trim() } else { $d.title.Trim() })
+    resumen  = Limpiar-Html $(if ($d.summaryTranslated) { $d.summaryTranslated } else { $d.summary })
+    fotos    = @(@($d.coverUrl) + @($d.designExtension.design_pictures | ForEach-Object { $_.url }) | Where-Object { $_ } | Select-Object -Unique)
+    original = $d.title
+    autor    = $d.designCreator.name
+    licencia = $d.license
+    precio   = ''
+    link     = "https://makerworld.com/en/models/$id"
+    ext      = 'webp'
+  }
+}
+
+# ---------- Cults3D (API oficial; la clave se guarda con 'Configurar Cults3D.bat') ----------
+function Get-CultsAuth {
+  $f = Join-Path $Modelos 'cults-clave.dat'
+  if (-not (Test-Path $f)) { throw "Falta tu clave de Cults3D. Corre 'Configurar Cults3D.bat' en la carpeta Modelos." }
+  $l = [IO.File]::ReadAllLines($f)
+  $sec = $l[1] | ConvertTo-SecureString
+  $key = [Runtime.InteropServices.Marshal]::PtrToStringBSTR([Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec))
+  return [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("$($l[0]):$key"))
+}
+
+function Get-ModeloCults($slug) {
+  $q = '{ creation(slug:"' + $slug + '") { identifier name(locale:ES) nameEn: name(locale:EN) description(locale:ES) url(locale:ES) illustrations { imageUrl(version:LARGE) position } creator { nick } license { name } price { cents currency } } }'
+  $body = @{ query = $q } | ConvertTo-Json -Compress
+  $r = Invoke-WebRequest -Uri 'https://cults3d.com/graphql' -Method Post -UseBasicParsing -UserAgent $UA `
+    -Headers @{ Authorization = "Basic $(Get-CultsAuth)" } -ContentType 'application/json; charset=utf-8' `
+    -Body ([Text.Encoding]::UTF8.GetBytes($body))
+  $ms = New-Object System.IO.MemoryStream; $r.RawContentStream.CopyTo($ms)
+  $c = ([Text.Encoding]::UTF8.GetString($ms.ToArray()) | ConvertFrom-Json).data.creation
+  if (-not $c) { throw "Cults3D no encontró el modelo '$slug'." }
+  # identifier es base64 de 'Creation/<número>'
+  $b = $c.identifier.Replace('-', '+').Replace('_', '/'); while ($b.Length % 4) { $b += '=' }
+  $num = ([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($b)) -split '/')[-1]
+  # La foto original está después de '/https://' en la dirección de la miniatura
+  $fotos = @($c.illustrations | Sort-Object position | ForEach-Object {
+    $u = $_.imageUrl; $k = $u.LastIndexOf('/https://'); if ($k -ge 0) { $u.Substring($k + 1) } else { $u } })
+  $precio = if ($c.price -and $c.price.cents -gt 0) { '{0:N2} {1}' -f ($c.price.cents / 100), $c.price.currency } else { 'Gratis' }
+  [pscustomobject]@{
+    id       = "c$num"
+    fuente   = 'Cults3D'
+    titulo   = $c.name.Trim()
+    resumen  = Limpiar-Html $c.description
+    fotos    = $fotos
+    original = $c.nameEn
+    autor    = $c.creator.nick
+    licencia = $c.license.name
+    precio   = $precio
+    link     = $c.url
+    ext      = 'jpg'
+  }
+}
+
+function Leer-Link($link) {
+  if ($link -match 'makerworld\.com/.*models/(\d+)') { return Get-ModeloMakerWorld $Matches[1] }
+  if ($link -match 'cults3d\.com/[^?#]*/([^/?#\s]+)') { return Get-ModeloCults $Matches[1] }
+  throw 'Link no reconocido.'
 }
 
 function Elegir-Categoria($data) {
@@ -107,11 +172,11 @@ function Elegir-Categoria($data) {
 # ---------- Inicio ----------
 if (-not (Test-Path $Modelos)) { New-Item -ItemType Directory $Modelos | Out-Null }
 if (-not (Test-Path $Links)) {
-  [IO.File]::WriteAllText($Links, "# Pega aquí los links de MakerWorld, uno por línea. Las líneas que empiezan con # se ignoran.`r`n", $Utf8)
+  [IO.File]::WriteAllText($Links, "# Pega aquí los links de MakerWorld o Cults3D, uno por línea. Las líneas que empiezan con # se ignoran.`r`n", $Utf8)
 }
 
 $lineas = [IO.File]::ReadAllLines($Links, [Text.Encoding]::UTF8)
-$pendientes = @($lineas | Where-Object { $_ -match 'makerworld\.com/.*models/(\d+)' })
+$pendientes = @($lineas | Where-Object { $_ -notmatch '^\s*#' -and ($_ -match 'makerworld\.com/.*models/\d+' -or $_ -match 'cults3d\.com/') } | ForEach-Object { $_.Trim() })
 if ($pendientes.Count -eq 0) {
   Write-Host 'No hay links en Modelos\links.txt. Pega los links (uno por línea), guarda el archivo y vuelve a correr esto.' -ForegroundColor Yellow
   Start-Process notepad.exe $Links
@@ -123,26 +188,25 @@ $fallidos = @()
 $agregados = @()
 
 foreach ($link in $pendientes) {
-  $id = [int64]([regex]::Match($link, 'models/(\d+)').Groups[1].Value)
-  Write-Titulo "Modelo $id"
+  Write-Titulo $link
   try {
-    $d = Get-Text "https://makerworld.com/api/v1/design-service/design/$id" | ConvertFrom-Json
-    $titulo = if ($d.titleTranslated) { $d.titleTranslated.Trim() } else { $d.title.Trim() }
-    $resumen = Limpiar-Html $(if ($d.summaryTranslated) { $d.summaryTranslated } else { $d.summary })
-    $fotos = @(@($d.coverUrl) + @($d.designExtension.design_pictures | ForEach-Object { $_.url }) | Where-Object { $_ } | Select-Object -Unique)
-    Write-Host "$titulo  ($($fotos.Count) fotos)"
+    $m = Leer-Link $link
+    $id = $m.id; $titulo = $m.titulo; $resumen = $m.resumen; $fotos = $m.fotos
+    Write-Host "[$($m.fuente)] $titulo  ($($fotos.Count) fotos)"
 
-    $yaEsta = @($data.productos | Where-Object { $_.id -eq $id }).Count -gt 0
+    $yaEsta = @($data.productos | Where-Object { "$($_.id)" -eq "$id" }).Count -gt 0
     $nombre = $titulo; $desc = ''; $cat = $null
     if ($yaEsta) {
       Write-Host 'Ya está en la web; solo se crea la carpeta.' -ForegroundColor DarkYellow
-      $p = $data.productos | Where-Object { $_.id -eq $id } | Select-Object -First 1
+      $p = $data.productos | Where-Object { "$($_.id)" -eq "$id" } | Select-Object -First 1
       $nombre = $p.nombre; $desc = $p.desc; $cat = $p.cat
     } else {
       $r = (Read-Host "Nombre para el catálogo (Enter = '$titulo')").Trim()
       if ($r) { $nombre = $r }
       # Sugerencia: primera oración del resumen, máximo ~150 caracteres cortando en palabra
-      $auto = ($resumen -split "`n" | Where-Object { $_.Length -gt 20 } | Select-Object -First 1)
+      # Se salta frases de relleno típicas de los autores (likes, Patreon, links, separadores)
+      $relleno = 'disfrut|me gusta|like|patreon|s[íi]gue|seguid|follow|http|boost|apoy|support|gracias|thank|^[-=*_~\s]+$'
+      $auto = ($resumen -split "`n" | Where-Object { $_.Length -gt 20 -and $_ -notmatch $relleno } | Select-Object -First 1)
       if (-not $auto) { $auto = '' }
       $auto = ($auto -split '(?<=[.!?])\s+')[0]
       if ($auto.Length -gt 150) { $auto = $auto.Substring(0, $auto.LastIndexOf(' ', 150)).TrimEnd(',', ';', ':') + '.' }
@@ -161,7 +225,13 @@ foreach ($link in $pendientes) {
       $i++
       $tmp = Join-Path $dir ('{0:D2}.tmp' -f $i)
       Save-Url $u $tmp
-      if (-not (Convertir-Jpg $tmp (Join-Path $dir ('{0:D2}.jpg' -f $i)))) {
+      # Cults3D: la foto chica de la web sale de la misma original (MakerWorld la da ya reducida, más abajo)
+      if ($m.ext -eq 'jpg' -and -not $yaEsta) {
+        if (-not (Convertir-Jpg $tmp (Join-Path $Repo ("img\$id-{0}.jpg" -f ($i - 1))) 800)) { throw "No se pudo convertir la foto $i para la web." }
+      }
+      if (Convertir-Jpg $tmp (Join-Path $dir ('{0:D2}.jpg' -f $i))) {
+        Remove-Item $tmp
+      } else {
         $ext = [IO.Path]::GetExtension(($u -split '\?')[0]); if (-not $ext) { $ext = '.img' }
         Move-Item -Force $tmp (Join-Path $dir ('{0:D2}{1}' -f $i, $ext))
       }
@@ -189,28 +259,33 @@ NOMBRE: $nombre
 
 $ig
 
-===== DESCRIPCIÓN COMPLETA DE MAKERWORLD (traducida) =====
+===== DESCRIPCIÓN COMPLETA DE $($m.fuente.ToUpper()) (traducida) =====
 
 $resumen
 "@
     [IO.File]::WriteAllText((Join-Path $dir 'descripcion.txt'), $txt, $Utf8)
     $info = @"
-Link: https://makerworld.com/en/models/$id
-Título original: $($d.title)
-Autor: $($d.designCreator.name)
-Licencia: $($d.license)
-Descargado: $(Get-Date -Format 'yyyy-MM-dd')
+Página: $($m.fuente)
+Link: $($m.link)
+Título original: $($m.original)
+Autor: $($m.autor)
+Licencia: $($m.licencia)
+$(if ($m.precio) { "Precio del archivo: $($m.precio)`r`n" })Descargado: $(Get-Date -Format 'yyyy-MM-dd')
 "@
     [IO.File]::WriteAllText((Join-Path $dir 'info.txt'), $info, $Utf8)
 
     # Web: fotos chicas en img\ y producto en productos.json
     if (-not $yaEsta) {
-      $i = 0
-      foreach ($u in $fotos) {
-        Save-Url "$($u)?x-oss-process=image/resize,w_800" (Join-Path $Repo "img\$id-$i.webp")
-        $i++
+      if ($m.ext -eq 'webp') {
+        $i = 0
+        foreach ($u in $fotos) {
+          Save-Url "$($u)?x-oss-process=image/resize,w_800" (Join-Path $Repo "img\$id-$i.webp")
+          $i++
+        }
       }
-      $data.productos += [pscustomobject]@{ id = $id; cat = $cat; nombre = $nombre; desc = $desc; fotos = $fotos.Count }
+      $prod = [ordered]@{ id = $id; cat = $cat; nombre = $nombre; desc = $desc; fotos = $fotos.Count }
+      if ($m.ext -ne 'webp') { $prod.ext = $m.ext }
+      $data.productos += [pscustomobject]$prod
       $agregados += $nombre
     }
     Write-Host "Listo: $dir" -ForegroundColor Green

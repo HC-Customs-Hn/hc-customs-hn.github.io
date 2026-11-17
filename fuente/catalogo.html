@@ -76,6 +76,7 @@ const BRAND = "HC Customs";
 const D = window.HCC;
 const cats = D.categorias.map(c => ({ id: c.id, name: c.nombre, c: c.color, items: D.productos.filter(p => p.cat === c.id).map(p => [p.id, p.nombre, p.desc]) })).filter(c => c.items.length);
 const PICS = Object.fromEntries(D.productos.map(p => [p.id, p.fotos]));
+const EXT = Object.fromEntries(D.productos.map(p => [p.id, p.ext || "webp"]));
 
 // numeración y paginación (portada = 1, índice = 2)
 const SITE = "https://hc-customs-hn.github.io/";
@@ -133,8 +134,8 @@ for (const pg of pages) {
     <div class="cat-head"><div class="bar"></div><h2>${cat.name}</h2>${pg.first ? "" : `<span class="cont">(continuación)</span>`}</div>
     <div class="grid">
     ${pg.chunk.map(it => `<div class="card" id="p${it.n}">
-        <div class="img"><img src="../img/${it.id}-0.webp"><span class="num">#${it.n}</span></div>
-        <div class="thumbs">${Array.from({ length: Math.min(4, PICS[it.id] - 1) }, (_, i) => `<img src="../img/${it.id}-${i + 1}.webp">`).join("")}</div>
+        <div class="img"><img src="../img/${it.id}-0.${EXT[it.id]}"><span class="num">#${it.n}</span></div>
+        <div class="thumbs">${Array.from({ length: Math.min(4, PICS[it.id] - 1) }, (_, i) => `<img src="../img/${it.id}-${i + 1}.${EXT[it.id]}">`).join("")}</div>
         <div class="info">
           <h3>${esc(it.name)}</h3>
           <p>${esc(it.desc)}</p>
