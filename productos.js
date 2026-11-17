@@ -37,7 +37,7 @@ window.HCC = {
                            "color":  "#6b4e16"
                        },
                        {
-                           "id":  "adornos",
+                           "id":  "adornos-decoracion",
                            "nombre":  "Adornos",
                            "sub":  "",
                            "color":  "#0f6b6b"
@@ -274,7 +274,7 @@ window.HCC = {
                       },
                       {
                           "id":  3457194,
-                          "cat":  "adornos",
+                          "cat":  "adornos-decoracion",
                           "nombre":  "Sistema de exhibición de pared para Pokemon / Magic",
                           "desc":  "Un sistema de exhibición montado en pared diseñado para tu colección.",
                           "fotos":  14

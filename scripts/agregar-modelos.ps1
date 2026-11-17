@@ -161,6 +161,10 @@ function Elegir-Categoria($data) {
       if (-not $nombre) { continue }
       $sub = (Read-Host 'Frase corta para la categoría (Enter para dejar vacío)').Trim()
       $id = ($nombre.ToLower().Normalize([Text.NormalizationForm]::FormD) -replace '\p{Mn}', '' -replace '[^a-z0-9]+', '-').Trim('-')
+      if (-not $id) { $id = 'categoria' }
+      # El código interno no se puede repetir (si no, los productos salen en dos categorías)
+      $base = $id; $k = 2
+      while (@($data.categorias | Where-Object { $_.id -eq $id }).Count) { $id = "$base-$k"; $k++ }
       $colores = '#6b4e16', '#0f6b6b', '#7a2e4d', '#3d5a1f', '#5a3d8a'
       $color = $colores[$data.categorias.Count % $colores.Count]
       $data.categorias += [pscustomobject]@{ id = $id; nombre = $nombre; sub = $sub; color = $color }

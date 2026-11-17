@@ -30,16 +30,19 @@
   /* Índice */
   h1.title { font-size: 28pt; font-weight: 800; color: #111111; }
   .subtitle { font-size: 11pt; color: #57606a; margin-top: 2mm; margin-bottom: 7mm; }
-  .toc-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
-  .toc-cat { border-radius: 4mm; padding: 5mm 6mm; background: #f6f4ef; border-left: 2.2mm solid var(--c); }
-  .toc-cat > a.cat-link { display: flex; justify-content: space-between; align-items: baseline; font-size: 14pt; font-weight: 700; color: var(--c); margin-bottom: 2.5mm; }
-  .toc-cat > a.cat-link small { font-size: 9pt; font-weight: 600; color: #57606a; }
+  /* Índice en 3 columnas; si no cabe, .toc-solo-cats deja solo las categorías */
+  .toc-cats { column-count: 3; column-gap: 4mm; }
+  .toc-cat { break-inside: avoid; display: inline-block; width: 100%; margin-bottom: 3.5mm; border-radius: 3mm; padding: 3mm 3.5mm; background: #f6f4ef; border-left: 1.6mm solid var(--c); }
+  .toc-cat > a.cat-link { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0 2mm; overflow-wrap: anywhere; font-size: 10.5pt; font-weight: 700; color: var(--c); margin-bottom: 1.5mm; line-height: 1.2; }
+  .toc-cat > a.cat-link small { font-size: 7.5pt; font-weight: 600; color: #57606a; white-space: nowrap; }
   .toc-cat ul { list-style: none; }
-  .toc-cat li a { display: flex; gap: 2mm; font-size: 10pt; padding: 1.1mm 0; border-bottom: 0.2mm dotted #c9c3b6; }
-  .toc-cat li a .n { color: var(--c); font-weight: 700; width: 7mm; flex: none; }
-  .toc-cat li a .name { flex: 1; }
-  .toc-cat li a .pg { color: #8b949e; font-size: 9pt; }
-  .toc-wide { grid-column: span 2; }
+  .toc-cat li a { display: flex; gap: 1.5mm; font-size: 7.5pt; line-height: 1.25; padding: 0.7mm 0; border-bottom: 0.2mm dotted #c9c3b6; }
+  .toc-cat li a .n { color: var(--c); font-weight: 700; width: 5mm; flex: none; }
+  .toc-cat li a .name { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .toc-cat li a .pg { color: #8b949e; font-size: 7pt; }
+  .toc-solo-cats .toc-cat ul { display: none; }
+  .toc-solo-cats .toc-cats { column-count: 2; }
+  .toc-solo-cats .toc-cat > a.cat-link { font-size: 13pt; margin: 0; }
   .toc-note { margin-top: 6mm; font-size: 9.5pt; color: #57606a; line-height: 1.5; }
 
   /* Páginas de producto */
@@ -118,8 +121,8 @@ html += `<section class="page" id="indice">
   <h1 class="title">Índice</h1>
   <p class="subtitle">Toca una categoría o un producto para ir directo a su página.</p>
   <div class="toc-cats">
-  ${cats.map((cat, i) => `<div class="toc-cat${i === cats.length - 1 && cats.length % 2 ? " toc-wide" : ""}" style="--c:${cat.c}">
-      <a class="cat-link" href="#${cat.id}">${cat.name}<small>pág. ${cat.page}</small></a>
+  ${cats.map((cat, i) => `<div class="toc-cat" style="--c:${cat.c}">
+      <a class="cat-link" href="#${cat.id}">${cat.name}<small>${cat.items.length} · pág. ${cat.page}</small></a>
       <ul>${cat.items.map(it => `<li><a href="#p${it.n}"><span class="n">${it.n}</span><span class="name">${esc(it.name)}</span><span class="pg">${it.page}</span></a></li>`).join("")}</ul>
     </div>`).join("")}
   </div>
@@ -149,6 +152,12 @@ for (const pg of pages) {
 }
 
 document.getElementById("root").innerHTML = html;
+
+// Si la lista completa no cabe en la página del índice, se muestran solo las categorías
+{
+  const idx = document.getElementById("indice"), note = idx.querySelector(".toc-note"), foot = idx.querySelector(".foot");
+  if (note.getBoundingClientRect().bottom > foot.getBoundingClientRect().top - 4) idx.classList.add("toc-solo-cats");
+}
 
 // Convierte las fotos (WebP) a JPEG comprimido para que el PDF pese poco
 document.querySelectorAll("img").forEach(img => {
