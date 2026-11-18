@@ -59,6 +59,24 @@
                            "nombre":  "Herramientas para Emprendimientos",
                            "sub":  "",
                            "color":  "#5a3d8a"
+                       },
+                       {
+                           "id":  "gopro-camera-mounts",
+                           "nombre":  "GoPro/Camera Mounts",
+                           "sub":  "",
+                           "color":  "#6b4e16"
+                       },
+                       {
+                           "id":  "piezas-para-carro",
+                           "nombre":  "Piezas para Carro",
+                           "sub":  "",
+                           "color":  "#0f6b6b"
+                       },
+                       {
+                           "id":  "drones",
+                           "nombre":  "Drones",
+                           "sub":  "",
+                           "color":  "#7a2e4d"
                        }
                    ],
     "productos":  [
@@ -586,6 +604,236 @@
                           "nombre":  "Pantalla Nifty Fifty (E27) Modular",
                           "desc":  "Lámpara colgante “Nifty Fifty” para casquillos E27.",
                           "fotos":  10
+                      },
+                      {
+                          "id":  1836552,
+                          "cat":  "gopro-camera-mounts",
+                          "nombre":  "Soporte GoPro para manillar de MTB 31.8mm",
+                          "desc":  "Soporte para GoPro para manillar de MTB con abrazadera de 31.8mm",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  1774279,
+                          "cat":  "gopro-camera-mounts",
+                          "nombre":  "Soporte GOPRO para horquilla de motocicleta",
+                          "desc":  "Diseñé esto hace mucho tiempo para registrar mis trayectos.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2961955,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Tapa de enganche de 2 pulgadas",
+                          "desc":  "Mantén tu enganche limpio y protegido con esta tapa de enganche 3D fácil de imprimir.",
+                          "fotos":  2
+                      },
+                      {
+                          "id":  1833488,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Cubierta de enganche TRD Montañas",
+                          "desc":  "Fácil de imprimir, diseño de una sola placa",
+                          "fotos":  1
+                      },
+                      {
+                          "id":  435116,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Tapa de enganche VW",
+                          "desc":  "Tapa de enganche con el emblema VW.",
+                          "fotos":  2
+                      },
+                      {
+                          "id":  2636034,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Transformers Autobots Tapa de Enganche de Remolque",
+                          "desc":  "Esta es una cubierta para enganche de remolque de Transformers Autobots que encaja en un enganche de 2 pulgadas.",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  2019145,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Tapa de enganche de 2 pulgadas para camioneta Ford",
+                          "desc":  "Se creó un modelo adicional para propietarios de camionetas Ford.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  2684748,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Almacenamiento de pared para soporte de enganche de bola de 2 pulgadas",
+                          "desc":  "Este modelo 3D es un soporte de pared para guardar montajes de bola de enganche de 2” y soportes ligeros que se utilizan en enganches de 2 pulgadas.",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  2242769,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Portavasos Owala para Tacoma de 2ª generación",
+                          "desc":  "Diseñé e imprimí este portavasos para mi botella de agua Owala.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  833415,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Medidor 52mm",
+                          "desc":  "",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  3084712,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Soporte triple para indicadores de 52 mm de un solo DIN para Honda EG Civic",
+                          "desc":  "12",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  1061527,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Soporte triple para indicadores de 60 mm - Soporte para indicadores de coche de 3 indicadores",
+                          "desc":  "Soporte triple para instrumentos de 60 mm con parasol",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  1591114,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Soporte para indicadores adicionales Audi A4 B5 / Soporte para medidor de 52 mm",
+                          "desc":  "Aquí encontrará un soporte para un indicador adicional de 52 mm para el Audi A4 B5.",
+                          "fotos":  10
+                      },
+                      {
+                          "id":  3149625,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Entrada de aire Ford Focus ST",
+                          "desc":  "Diseñé esta toma de aire para mi Ford Focus ST MK3 Escaneé en 3D la parte delantera del coche sin la parrilla y diseñé la toma de aire forzado para.",
+                          "fotos":  11
+                      },
+                      {
+                          "id":  2914667,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Ford Focus Eliminación Limpiaparabrisas Trasero",
+                          "desc":  "Eliminación de Limpiaparabrisas Trasero Ford Focus 2013-2018",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  3179948,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Tubo de admisión de aire S2000",
+                          "desc":  "Este es un reemplazo directo del tubo de admisión de fábrica, aún usa la caja de aire de fábrica.",
+                          "fotos":  2
+                      },
+                      {
+                          "id":  2051973,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Conducto de admisión para Civic de 10ª generación",
+                          "desc":  "Esto es un conducto de admisión para el bisel de la luz antiniebla del lado del conductor en tu Civic de décima generación",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  1676874,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Conducto NACA de 1.25 pulgadas",
+                          "desc":  "Pequeño conducto NACA para manguera corrugada de 1.25 pulgadas.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  986953,
+                          "cat":  "adornos-decoracion",
+                          "nombre":  "Aeronave SR-71 Blackbird - Versión de exhibición detallada - Impresión A1 mini",
+                          "desc":  "Aeronave SR-71 Blackbird - Versión de exhibición detallada - Impresión A1 mini",
+                          "fotos":  9
+                      },
+                      {
+                          "id":  697234,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Campanas para entrada de aire",
+                          "desc":  "Libere todo el potencial de su motor con este modelo paramétrico 3D de una pila de velocidad.",
+                          "fotos":  13
+                      },
+                      {
+                          "id":  1568134,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Toma de admisión Velocity Stack para Dellorto 19.19E",
+                          "desc":  "Esta es una toma de admisión Velocity Stack impresa en 3D, diseñada a medida para ajustarse específicamente al carburador Dellorto 19.19E, comúnmente.",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  1536228,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "porta instrumentos toma de aire izquierda e46",
+                          "desc":  "BMW E46 1997-2006 PORTAINSTRUMENTOS TOMA DE AIRE 52MM TURBO",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  3260521,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Toyota GR86 Snorkel de admisión Speed Engineering",
+                          "desc":  "Toyota GR86 – Toma de aire para la caja de admisión de Speed Engineering",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  "c2382053",
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Portavasos con caja para BMW E46",
+                          "desc":  "Durante varios años tuve una caja con una persiana enrollable que no era muy funcional.",
+                          "fotos":  6,
+                          "ext":  "jpg"
+                      },
+                      {
+                          "id":  3501304,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Placa frontal de snorkel Safari - Símbolo Toyota",
+                          "desc":  "Placa frontal personalizada con el símbolo de Toyota para tu snorkel Safari ten en cuenta que solo encaja en snorkels con placa frontal extraíble",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  1892045,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Conducto de Admisión S2000",
+                          "desc":  "Conducto de Admisión S2000",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  "c2330976",
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Toyota RAV4 1 GENERACIÓN REJILLA DE AIRE ACONDICIONADO AC TABLERO LADO DEL ACOMPAÑANTE 1XA10 Rav4 Calefacción HVAC",
+                          "desc":  "Toyota RAV4 1 GENERACIÓN REJILLA DE AIRE ACONDICIONADO LADO DEL ACOMPAÑANTE",
+                          "fotos":  9,
+                          "ext":  "jpg"
+                      },
+                      {
+                          "id":  "c3134712",
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Portavasos BMW Z4 e89 (Bimmercup Modelo 2)",
+                          "desc":  "Archivo 3d original de Bimmercup.com.",
+                          "fotos":  2,
+                          "ext":  "jpg"
+                      },
+                      {
+                          "id":  "c1636251",
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "MANDO DE CAMBIO LOGITECH G29 (VERSIÓN BMW)",
+                          "desc":  "Este modelo 3D es para la palanca de cambios logitech G29.",
+                          "fotos":  1,
+                          "ext":  "jpg"
+                      },
+                      {
+                          "id":  "c3915960",
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Logitech G25/G27/G29/G920/G923 Pomo Sparco",
+                          "desc":  "This is a custom-designed SPARCO logo gear shift knob made for Logitech G29 and other Logitech shifters that use the same shaft and mounting system.",
+                          "fotos":  7,
+                          "ext":  "jpg"
+                      },
+                      {
+                          "id":  "c1199859",
+                          "cat":  "drones",
+                          "nombre":  "Protectores de hélices DJI Mini 2",
+                          "desc":  "Inspirado en algunas imágenes vistas en la web, hice estos protectores de hélices para mi dron DJI Mini 2, para ser utilizados en interiores.",
+                          "fotos":  10,
+                          "ext":  "jpg"
+                      },
+                      {
+                          "id":  3581662,
+                          "cat":  "regalos",
+                          "nombre":  "Llavero Multifunción Compacto MKL 4 en 1",
+                          "desc":  "Llavero Multifunción Compacto MKL",
+                          "fotos":  8
                       }
                   ]
 }
