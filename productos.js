@@ -77,6 +77,12 @@ window.HCC = {
                            "nombre":  "Drones",
                            "sub":  "",
                            "color":  "#7a2e4d"
+                       },
+                       {
+                           "id":  "piezas-para-moto",
+                           "nombre":  "piezas para moto",
+                           "sub":  "",
+                           "color":  "#3d5a1f"
                        }
                    ],
     "productos":  [
@@ -834,6 +840,181 @@ window.HCC = {
                           "nombre":  "Llavero Multifunción Compacto MKL 4 en 1",
                           "desc":  "Llavero Multifunción Compacto MKL",
                           "fotos":  8
+                      },
+                      {
+                          "id":  1313111,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "G29 - G920 - G923 Volante Logitech Modificado",
+                          "desc":  "Se han añadido el logo de F1 o el logo de Ferrari al centro del volante para hacerlo más llamativo y se puede colorear al gusto",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  1456134,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Bloqueo/Montaje para Silla con Pedales Logitech - ¡Ajustable!",
+                          "desc":  "🎮 ¡Estabiliza tu Silla de Oficina Mientras Compites!",
+                          "fotos":  10
+                      },
+                      {
+                          "id":  1806279,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Modificación de Volante Estilo F1 Logitech G29 Fórmula",
+                          "desc":  "Este modelo es un remix, completamente remodelado desde cero, del modelo de volante original.",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  2004521,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Protector de cable pedales V_2 Logitech g29 g920 g923",
+                          "desc":  "Última versión: V_2 11/2025",
+                          "fotos":  9
+                      },
+                      {
+                          "id":  1993428,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Conversión de palanca de cambios G29/G920 - conversión de cambio",
+                          "desc":  "Accesorio para convertir la palanca de cambios normal G29/G920 en una palanca de cambios secuencial o en un freno de mano hidráulico.",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  3550937,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Soporte para PS5 para Secretlab MAGNUS Pro",
+                          "desc":  "Soporte vertical bajo mesa para la PS5 original (2020, con unidad de disco y digital).",
+                          "fotos":  8
+                      },
+                      {
+                          "id":  2507254,
+                          "cat":  "soportes-y-tecnologia",
+                          "nombre":  "Soporte bajo escritorio PS5 PRO (sin disco)",
+                          "desc":  "Soporte bajo escritorio para la PS5 PRO (variante sin unidad de disco)",
+                          "fotos":  9
+                      },
+                      {
+                          "id":  3431853,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Entrada de aire rígida BMW f30",
+                          "desc":  "Rígida y más cercana a la original, necesita imprimirse con paredes completas.",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  933536,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Cuchara modificada BMW F30",
+                          "desc":  "He recibido un archivo STL de un colega para imprimir una pieza diseñada para mejorar la admisión de aire de un BMW.",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  1930241,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Alerón de Ducati Panigale",
+                          "desc":  "Puedes reflejar el objeto para obtener el lado izquierdo",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  3133511,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "BMW F22 2 Series M235i Snorkel de Admisión",
+                          "desc":  "Remix de \"Modified Scoop F30 BMW\" por Lyrix",
+                          "fotos":  9
+                      },
+                      {
+                          "id":  1148048,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Tubo de admisión para FR-S / BRZ / GT86",
+                          "desc":  "",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  3013207,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Guardabarros/alerón de luz Yamaha MT-15",
+                          "desc":  "Guardabarros / alerón de luz personalizable impreso en 3D para la Yamaha MT-15.",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  2522459,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Alerón MT-09",
+                          "desc":  "Pequeños alerones para tomas de aire para MT-09 fase 2",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  3178943,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Cubierta de Bocina MT09 Gen4",
+                          "desc":  "Esta es una sencilla cubierta de bocina para los modelos MT09 Gen 4 para ocultar la vista de la bocina",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  3031465,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Protección de generador Yamaha R6 2007",
+                          "desc":  "Protección de generador Yamaha R6 (2006-2021) | Impresión 3D",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  1498821,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Protección de faro delantero BMW_R1200GS",
+                          "desc":  "Rejilla de protección de faro delantero BMW R1200GS",
+                          "fotos":  1
+                      },
+                      {
+                          "id":  2682717,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Kit aerodinámico Kawasaki ZX400RR",
+                          "desc":  "Kit aerodinámico para la Kawasaki ZX4RR.",
+                          "fotos":  6
+                      },
+                      {
+                          "id":  2315215,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Alerón Aerodinámico Yamaha MT-07 (2018–2020|Gen 2)",
+                          "desc":  "Alerón Aerodinámico Yamaha MT-07 (2018–2020|Gen 2)🪽",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  792828,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Aleta MT07",
+                          "desc":  "Aleta para Yamaha MT07 2019-2024",
+                          "fotos":  4
+                      },
+                      {
+                          "id":  3002199,
+                          "cat":  "piezas-para-moto",
+                          "nombre":  "Alerones de Velocidad",
+                          "desc":  "Delante, a un lado – pégalos donde quieras",
+                          "fotos":  5
+                      },
+                      {
+                          "id":  1926239,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "BRZ/86/FRS Engine Belt Covers (1st Gen)",
+                          "desc":  "Nota: El modelo adjunto es una versión en blanco sin logotipo",
+                          "fotos":  11
+                      },
+                      {
+                          "id":  581803,
+                          "cat":  "gopro-camera-mounts",
+                          "nombre":  "Equipo de buceo GoPro",
+                          "desc":  "Equipo de buceo GoPro (alemán abajo)",
+                          "fotos":  7
+                      },
+                      {
+                          "id":  2842657,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Toma de aire lateral delantera Mercedes-Benz W212 E-Class W213",
+                          "desc":  "Toma de aire lateral del parachoques delantero personalizada inspirada en el W213 para los modelos Mercedes-Benz Clase E W212 Facelift Sport.",
+                          "fotos":  3
+                      },
+                      {
+                          "id":  1635846,
+                          "cat":  "piezas-para-carro",
+                          "nombre":  "Parrilla delantera C5 Corvette",
+                          "desc":  "Esta es una inserción de parrilla delantera que hice para mi auto de carreras C5 Z06, estas fueron diseñadas usando un escaneo 3D de mi parachoques.",
+                          "fotos":  9
                       }
                   ]
 };
